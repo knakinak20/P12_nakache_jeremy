@@ -71,7 +71,7 @@ class DetailTeamSelectedViewController: UIViewController {
                     self?.navigationItem.title = response.team.name
                     self?.capacityLabel.text = "\(response.venue.capacity) places"
                     self?.cityStadium.text = response.venue.city
-                    self?.surfaceStadiumLabel.text = response.venue.surface
+                    self?.surfaceStadiumLabel.text = "surface \(response.venue.surface)"
                     if let founded = result.response.first?.team.founded {
                         self?.foundInDateTeamSelected.text = "Créé en \(founded)"
                     }
