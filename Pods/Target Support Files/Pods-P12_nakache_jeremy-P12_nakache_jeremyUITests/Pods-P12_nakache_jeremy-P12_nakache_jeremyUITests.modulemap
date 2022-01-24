@@ -1,0 +1,6 @@
+framework module Pods_P12_nakache_jeremy_P12_nakache_jeremyUITests {
+  umbrella header "Pods-P12_nakache_jeremy-P12_nakache_jeremyUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

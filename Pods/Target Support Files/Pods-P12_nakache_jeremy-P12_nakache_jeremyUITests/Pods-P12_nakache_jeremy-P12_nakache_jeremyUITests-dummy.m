@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_P12_nakache_jeremy_P12_nakache_jeremyUITests : NSObject
+@end
+@implementation PodsDummy_Pods_P12_nakache_jeremy_P12_nakache_jeremyUITests
+@end
