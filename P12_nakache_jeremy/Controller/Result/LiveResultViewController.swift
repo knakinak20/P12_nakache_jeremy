@@ -20,11 +20,12 @@ class LiveResultViewController: UIViewController {
         resultTableView.delegate = self
         
     }
+  
     
 }
 extension LiveResultViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 70
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "SegueToDetailMatch", sender: indexPath)
@@ -51,15 +52,31 @@ extension LiveResultViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         let result = results[indexPath.row]
-        if let scoreHome = result.score.fulltime.home, let scoreAway = result.score.fulltime.away {
-            let nameTeamHome = result.teams.home.name
-            let nameTeamAway = result.teams.away.name
-            let urlLogoTeamHome = result.teams.home.logo
-            let urlLogoTeamAway = result.teams.away.logo
-            let score = "\(scoreHome) - \(scoreAway)"
-        cell.configure(urlLogoTeamHome: urlLogoTeamHome, urlLogoTeamAway: urlLogoTeamAway, nameTeamHome: nameTeamHome, nameTeamAway: nameTeamAway, score: score)
-            
+        let nameTeamHome = result.teams.home.name
+        let nameTeamAway = result.teams.away.name
+        let shortStatus = result.fixture.status.short
+        let timeElapsed = result.fixture.status.elapsed
+        let indicationTime = "\(shortStatus) \(timeElapsed ?? 0)'"
+        
+        
+        var score = ""
+        
+        if shortStatus == "NS" || shortStatus == "PST" || shortStatus == "CANC" || shortStatus == "TBD"{
+            score = "-"
+        } else if shortStatus == "1H" || shortStatus == "2H" || shortStatus == "LIVE" {
+            if let goalHome = result.goals.home , let goalAway = result.goals.away {
+                score = "\(goalHome) - \(goalAway)" }
+        } else if shortStatus == "HT" {
+            if let halfTimeScoreHome = result.score.halftime.home, let halfTimeScoreAway = result.score.halftime.away {
+                score = "\(halfTimeScoreHome) - \(halfTimeScoreAway)"
+            }
+        } else if shortStatus == "FT" {
+            if let scoreFTHome = result.score.fulltime.home, let scoreFTAway = result.score.fulltime.away {
+                score = "\(scoreFTHome) - \(scoreFTAway)"
+            }
         }
+           
+        cell.configure(nameTeamHome: nameTeamHome, nameTeamAway: nameTeamAway, score: score, indication: indicationTime)
         return cell
     }
     

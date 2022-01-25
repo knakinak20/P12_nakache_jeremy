@@ -27,7 +27,7 @@ class ResultRepository {
                     let decoder = JSONDecoder()
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
                     let launch = try decoder.decode(FixtureResponse.self, from: data)
-                    completion(launch)
+                        completion(launch)
                 } catch _ {
                     print("alert")
                     return

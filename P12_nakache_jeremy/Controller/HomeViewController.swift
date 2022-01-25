@@ -11,6 +11,7 @@ class HomeViewController: UIViewController {
     
     private let resultRepository = ResultRepository()
     private var results = [ResponseFixture]()
+    private var dateToday = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,9 +21,18 @@ class HomeViewController: UIViewController {
     @IBAction func getResult(_ sender: Any) {
         getResultData()
     }
+    func getCurrentShortDate() {
+        let todaysDate = NSDate()
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateToday = dateFormatter.string(from: todaysDate as Date)
+    }
     
     private func getResultData() {
-        resultRepository.getResults(endPoint: "fixtures?date=2022-01-23&timezone=Europe/Paris") { [weak self] result in
+        getCurrentShortDate()
+        
+        resultRepository.getResults(endPoint: "fixtures?date=\(dateToday)&timezone=Europe/Paris") { [weak self] result in
             DispatchQueue.main.async {
                 self?.results = result.response
                 self?.performSegue(withIdentifier: "SegueToResultDay", sender: self)
