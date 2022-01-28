@@ -17,9 +17,7 @@ class StandingViewController: UIViewController {
     var standings = [Standing]()
     var team = [Team]()
     var selectedLigue = ""
-    var selectedLigueId : Int = 0
     var selectedTeamId : Int = 0
-    var teamFounded : Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()

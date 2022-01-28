@@ -7,36 +7,108 @@
 
 import UIKit
 import Alamofire
+import AlamofireImage
 
-class DetailTeamSelectedViewController: UIViewController, UITabBarDelegate {
+let myNotificationKey = "team.notificationKey"
+
+class DetailTeamSelectedViewController: UIViewController {
+    
     
     var standing = [Standing]()
     var teamRepository = TeamsRepository()
     
+    private let infoViewSegmentControlIndex = 0
+    private let teamViewSegmentControlIndex = 1
+    
     @IBOutlet weak var standingTeamSelectedLabel: UILabel!
-    @IBOutlet weak var nameStadiumTeamSelected: UILabel!
-    @IBOutlet weak var addressStadiumTeamSelected: UILabel!
+    
     @IBOutlet weak var nameTeamSelected: UILabel!
     @IBOutlet weak var foundInDateTeamSelected: UILabel!
-    @IBOutlet weak var imageStadiumTeamSelected: UIImageView!
-    @IBOutlet weak var cityStadium: UILabel!
     @IBOutlet weak var logoTeamImageView: UIImageView!
-    @IBOutlet weak var capacityLabel: UILabel!
-    @IBOutlet weak var surfaceStadiumLabel: UILabel!
-    @IBOutlet weak var viewStadiumDetail: UIView!
-    @IBOutlet weak var containerView: UIView!
     
-
+    @IBOutlet weak var viewToSwitch: UIView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
+    lazy var teamCompositionViewController: TeamCompositionViewController = {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        var teamCompoviewController = storyboard.instantiateViewController(withIdentifier: "TeamCompositionViewController") as! TeamCompositionViewController
+        //self.addViewControllerAsChildViewController(childViewController: teamCompoviewController)
+        return teamCompoviewController
+    }()
+    
+    lazy var infosStadiumViewController: InfosStadiumViewController = {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        var infoStadiumviewController = storyboard.instantiateViewController(withIdentifier: "InfosStadiumViewController") as! InfosStadiumViewController
+        ///self.addViewControllerAsChildViewController(childViewController: infoStadiumviewController)
+        return infoStadiumviewController
+    }()
+    
+    @IBAction func segmentControlTap(_ sender: UISegmentedControl) {
+        let currentIndex = sender.selectedSegmentIndex
+        if currentIndex == infoViewSegmentControlIndex {
+            launchInfo()
+        } else if currentIndex == teamViewSegmentControlIndex {
+            launchTeam()
+        } else {
+            print("Invalid segment index")
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
         configure()
+        
         getDataTeamSelected()
-        imageStadiumTeamSelected.alpha = 0.6
     }
     
-    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-      
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        launchInfo()
     }
+    
+    private func setupView() {
+        setupSegmentedControl()
+        updateView()
+    }
+    
+    func updateView() {
+        infosStadiumViewController.view.isHidden = !(segmentedControl.selectedSegmentIndex == 0)
+        teamCompositionViewController.view.isHidden = (segmentedControl.selectedSegmentIndex == 0)
+//        if let idTeam = standing.first?.team.id {
+//            NotificationCenter.default.post(name: Notification.Name(rawValue: myNotificationKey), object: self,userInfo: ["idTeam" : "\(idTeam)", "standing": standing])
+//
+//        }
+    }
+    private func setupSegmentedControl(){
+        segmentedControl.removeAllSegments()
+        segmentedControl.insertSegment(withTitle: "Infos", at: 0, animated: false)
+        segmentedControl.insertSegment(withTitle: "Effectif Equipe", at: 1, animated: false)
+        segmentedControl.addTarget(self, action: #selector(selectionDidChange(sender:)), for: .valueChanged)
+        segmentedControl.selectedSegmentIndex = 0
+    }
+    
+    @objc func selectionDidChange(sender: UISegmentedControl){
+        updateView()
+    }
+    
+    private func addViewControllerAsChildViewController(childViewController: UIViewController){
+        addChild(childViewController)
+        
+        viewToSwitch.addSubview(childViewController.view)
+        
+        childViewController.view.frame = view.bounds
+        childViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        childViewController.didMove(toParent: self)
+    }
+    
+    private func removeViewController(childViewController: UIViewController) {
+        childViewController.willMove(toParent: nil)
+        childViewController.view.removeFromSuperview()
+        childViewController.removeFromParent()
+    }
+    
     private func configure() {
         if let urlLogo = standing.first?.team.logo {
             getImage(with: urlLogo, imageView: logoTeamImageView)
@@ -70,21 +142,25 @@ class DetailTeamSelectedViewController: UIViewController, UITabBarDelegate {
         teamRepository.getDataTeams(endPoint: "teams?id=\(selectedTeamId)"){ [weak self] result in
             if let response = result.response.first {
                 DispatchQueue.main.async {
-                    self?.addressStadiumTeamSelected.text = response.venue.address
                     self?.nameTeamSelected.text = response.team.name
-                    self?.nameStadiumTeamSelected.text = response.venue.name
-                    self?.navigationItem.title = response.team.name
-                    self?.capacityLabel.text = "\(response.venue.capacity) places"
-                    self?.cityStadium.text = response.venue.city
-                    self?.surfaceStadiumLabel.text = "surface \(response.venue.surface)"
+                    
                     if let founded = result.response.first?.team.founded {
                         self?.foundInDateTeamSelected.text = "Créé en \(founded)"
-                    }
-                    if let urlLogo = result.response.first?.venue.image {
-                        self?.getImage(with: urlLogo, imageView: (self?.imageStadiumTeamSelected)!)
                     }
                 }
             }
         }
+    }
+    
+    private func launchInfo() {
+        removeViewController(childViewController: teamCompositionViewController)
+        infosStadiumViewController.standing = standing
+        addViewControllerAsChildViewController(childViewController: infosStadiumViewController)
+    }
+    
+    private func launchTeam() {
+        removeViewController(childViewController: infosStadiumViewController)
+        teamCompositionViewController.idTeam = standing.first?.team.id
+        addViewControllerAsChildViewController(childViewController: teamCompositionViewController)
     }
 }

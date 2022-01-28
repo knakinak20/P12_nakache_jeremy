@@ -7,7 +7,6 @@
 
 import UIKit
 
-import Alamofire
 
 class ResultTableViewCell: UITableViewCell {
 
@@ -15,6 +14,7 @@ class ResultTableViewCell: UITableViewCell {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var teamAwayName: UILabel!
     @IBOutlet weak var IndicationTimeLabel: UILabel!
+    @IBOutlet weak var gameSheduleLabel: UILabel!
     
     
     override func awakeFromNib() {
@@ -25,11 +25,12 @@ class ResultTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
 
-    func configure(nameTeamHome : String, nameTeamAway: String, score: String, indication : String) {
+    func configure(nameTeamHome : String, nameTeamAway: String, score: String, indication : String, gameSchedule: String) {
         
         teamHomeName.text = nameTeamHome
         teamAwayName.text = nameTeamAway
         scoreLabel.text = score
         IndicationTimeLabel.text = indication
+        gameSheduleLabel.text = gameSchedule
     }
 }

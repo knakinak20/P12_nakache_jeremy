@@ -19,6 +19,7 @@
 		CE2B9F27279F0F32009530C2 /* P12_nakache_jeremyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2B9F26279F0F32009530C2 /* P12_nakache_jeremyUITestsLaunchTests.swift */; };
 		CE858C5027A0015D00D62BCB /* PlayersStructJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE858C4F27A0015D00D62BCB /* PlayersStructJson.swift */; };
 		CE858C5227A0017600D62BCB /* PlayersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE858C5127A0017600D62BCB /* PlayersRepository.swift */; };
+		CE86303F27A2BD660040303B /* InfosStadiumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE86303E27A2BD660040303B /* InfosStadiumViewController.swift */; };
 		CE994366279F115C000CB159 /* PickerViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE994365279F115C000CB159 /* PickerViewData.swift */; };
 		CE994369279F1182000CB159 /* StandingsStructJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE994368279F1182000CB159 /* StandingsStructJson.swift */; };
 		CE99436B279F1198000CB159 /* StandingsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE99436A279F1198000CB159 /* StandingsRepository.swift */; };
@@ -80,6 +81,7 @@
 		CE2B9F26279F0F32009530C2 /* P12_nakache_jeremyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P12_nakache_jeremyUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		CE858C4F27A0015D00D62BCB /* PlayersStructJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersStructJson.swift; sourceTree = "<group>"; };
 		CE858C5127A0017600D62BCB /* PlayersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersRepository.swift; sourceTree = "<group>"; };
+		CE86303E27A2BD660040303B /* InfosStadiumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfosStadiumViewController.swift; sourceTree = "<group>"; };
 		CE994365279F115C000CB159 /* PickerViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewData.swift; sourceTree = "<group>"; };
 		CE994368279F1182000CB159 /* StandingsStructJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StandingsStructJson.swift; path = P12_nakache_jeremy/Model/StandingsStructJson.swift; sourceTree = SOURCE_ROOT; };
 		CE99436A279F1198000CB159 /* StandingsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingsRepository.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 				CE99437D279F12ED000CB159 /* FormViewController.swift */,
 				CE99437F279F130F000CB159 /* StandingViewController.swift */,
 				CE994381279F132A000CB159 /* DetailTeamSelectedViewController.swift */,
+				CE86303E27A2BD660040303B /* InfosStadiumViewController.swift */,
 				CEC825EF279FF82E005558C6 /* TeamCompositionViewController.swift */,
 			);
 			path = Standing;
@@ -546,6 +549,7 @@
 				CE99436D279F11AD000CB159 /* StandingTableViewCell.swift in Sources */,
 				CE2B9F03279F0F2F009530C2 /* SceneDelegate.swift in Sources */,
 				CE994386279F1368000CB159 /* LiveResultViewController.swift in Sources */,
+				CE86303F27A2BD660040303B /* InfosStadiumViewController.swift in Sources */,
 				CE994366279F115C000CB159 /* PickerViewData.swift in Sources */,
 				CE994369279F1182000CB159 /* StandingsStructJson.swift in Sources */,
 				CE994375279F123A000CB159 /* ResultRepository.swift in Sources */,

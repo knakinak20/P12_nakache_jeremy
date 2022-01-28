@@ -10,6 +10,8 @@ import UIKit
 class LiveResultViewController: UIViewController {
     
     var results = [ResponseFixture]()
+    var league = [League]()
+    
     @IBOutlet weak var resultTableView: UITableView!
     
     
@@ -25,23 +27,29 @@ class LiveResultViewController: UIViewController {
 }
 extension LiveResultViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+        return 80
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "SegueToDetailMatch", sender: indexPath)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if (segue.identifier == "SegueToDetailMatch") {
+            if let indexPath = self.resultTableView.indexPathForSelectedRow {
             let nextViewController = segue.destination as! MatchDetailViewController
-            nextViewController.results = results
-            
+                nextViewController.results = [results[indexPath.row]]
+            }
         }
         
     }
 }
 
 extension LiveResultViewController: UITableViewDataSource {
-    
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        return league.count
+//    }
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return league[section].name
+//    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return results.count
     }
@@ -57,7 +65,7 @@ extension LiveResultViewController: UITableViewDataSource {
         let shortStatus = result.fixture.status.short
         let timeElapsed = result.fixture.status.elapsed
         let indicationTime = "\(shortStatus) \(timeElapsed ?? 0)'"
-        
+        var gameSchedule = ""
         
         var score = ""
         
@@ -75,8 +83,18 @@ extension LiveResultViewController: UITableViewDataSource {
                 score = "\(scoreFTHome) - \(scoreFTAway)"
             }
         }
-           
-        cell.configure(nameTeamHome: nameTeamHome, nameTeamAway: nameTeamAway, score: score, indication: indicationTime)
+        if shortStatus == "NS" {
+            let dateStr = result.fixture.date
+            let start = dateStr.index(dateStr.startIndex, offsetBy: 11)
+            let end = dateStr.index(dateStr.endIndex, offsetBy: -9)
+            let range = start..<end
+            
+            gameSchedule = "\(dateStr[range])H"
+            
+        } else {
+            gameSchedule = ""
+        }
+        cell.configure(nameTeamHome: nameTeamHome, nameTeamAway: nameTeamAway, score: score, indication: indicationTime, gameSchedule: gameSchedule)
         return cell
     }
     
