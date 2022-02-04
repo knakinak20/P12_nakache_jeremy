@@ -31,6 +31,7 @@ struct Response : Decodable{
 }
 
 struct League: Decodable {
+    
     let id: Int?
     let name, country: String?
     let logo: String?

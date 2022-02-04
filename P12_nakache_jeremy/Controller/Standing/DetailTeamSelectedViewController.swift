@@ -32,14 +32,12 @@ class DetailTeamSelectedViewController: UIViewController {
     lazy var teamCompositionViewController: TeamCompositionViewController = {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         var teamCompoviewController = storyboard.instantiateViewController(withIdentifier: "TeamCompositionViewController") as! TeamCompositionViewController
-        //self.addViewControllerAsChildViewController(childViewController: teamCompoviewController)
         return teamCompoviewController
     }()
     
     lazy var infosStadiumViewController: InfosStadiumViewController = {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         var infoStadiumviewController = storyboard.instantiateViewController(withIdentifier: "InfosStadiumViewController") as! InfosStadiumViewController
-        ///self.addViewControllerAsChildViewController(childViewController: infoStadiumviewController)
         return infoStadiumviewController
     }()
     
@@ -75,10 +73,7 @@ class DetailTeamSelectedViewController: UIViewController {
     func updateView() {
         infosStadiumViewController.view.isHidden = !(segmentedControl.selectedSegmentIndex == 0)
         teamCompositionViewController.view.isHidden = (segmentedControl.selectedSegmentIndex == 0)
-//        if let idTeam = standing.first?.team.id {
-//            NotificationCenter.default.post(name: Notification.Name(rawValue: myNotificationKey), object: self,userInfo: ["idTeam" : "\(idTeam)", "standing": standing])
-//
-//        }
+
     }
     private func setupSegmentedControl(){
         segmentedControl.removeAllSegments()

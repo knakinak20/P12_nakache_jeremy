@@ -17,7 +17,7 @@ class StandingViewController: UIViewController {
     var standings = [Standing]()
     var team = [Team]()
     var selectedLigue = ""
-    var selectedTeamId : Int = 0
+   // var selectedTeamId : Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +79,7 @@ extension StandingViewController: UITableViewDataSource {
         let lose = String(standingRow.all.lose)
         let goalsDiff = String(standingRow.goalsDiff)
         let logoUrl = standingRow.team.logo
-        selectedTeamId = standingRow.team.id!
+       // selectedTeamId = standingRow.team.id!
         
         cell.configure(rank: rank, nameTeam: nameTeam, point: points, played: played, win: win, draw: draw, lose: lose, goalsDiff: goalsDiff,logoUrl: logoUrl)
         return cell

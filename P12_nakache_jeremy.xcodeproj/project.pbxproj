@@ -17,9 +17,13 @@
 		CE2B9F1B279F0F32009530C2 /* P12_nakache_jeremyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2B9F1A279F0F32009530C2 /* P12_nakache_jeremyTests.swift */; };
 		CE2B9F25279F0F32009530C2 /* P12_nakache_jeremyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2B9F24279F0F32009530C2 /* P12_nakache_jeremyUITests.swift */; };
 		CE2B9F27279F0F32009530C2 /* P12_nakache_jeremyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2B9F26279F0F32009530C2 /* P12_nakache_jeremyUITestsLaunchTests.swift */; };
+		CE3FF0C627A7DF860075A0AA /* PlayerSquadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3FF0C527A7DF860075A0AA /* PlayerSquadTableViewCell.swift */; };
 		CE858C5027A0015D00D62BCB /* PlayersStructJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE858C4F27A0015D00D62BCB /* PlayersStructJson.swift */; };
 		CE858C5227A0017600D62BCB /* PlayersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE858C5127A0017600D62BCB /* PlayersRepository.swift */; };
 		CE86303F27A2BD660040303B /* InfosStadiumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE86303E27A2BD660040303B /* InfosStadiumViewController.swift */; };
+		CE8C665927AD318A00B22C2F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8C665827AD318A00B22C2F /* MapViewController.swift */; };
+		CE8C665E27AD368D00B22C2F /* SportMarseille.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8C665D27AD368D00B22C2F /* SportMarseille.swift */; };
+		CE8C666027AD4BEE00B22C2F /* Marseille.geojson in Resources */ = {isa = PBXBuildFile; fileRef = CE8C665F27AD495900B22C2F /* Marseille.geojson */; };
 		CE994366279F115C000CB159 /* PickerViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE994365279F115C000CB159 /* PickerViewData.swift */; };
 		CE994369279F1182000CB159 /* StandingsStructJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE994368279F1182000CB159 /* StandingsStructJson.swift */; };
 		CE99436B279F1198000CB159 /* StandingsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE99436A279F1198000CB159 /* StandingsRepository.swift */; };
@@ -35,7 +39,10 @@
 		CE994382279F132A000CB159 /* DetailTeamSelectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE994381279F132A000CB159 /* DetailTeamSelectedViewController.swift */; };
 		CE994386279F1368000CB159 /* LiveResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE994385279F1368000CB159 /* LiveResultViewController.swift */; };
 		CE994388279F1384000CB159 /* MatchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE994387279F1384000CB159 /* MatchDetailViewController.swift */; };
+		CE9BC00A27AA859F00399A66 /* EventsJsonStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9BC00927AA859F00399A66 /* EventsJsonStruct.swift */; };
+		CE9BC00C27AA86BC00399A66 /* EventsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9BC00B27AA86BC00399A66 /* EventsRepository.swift */; };
 		CEC825F0279FF82E005558C6 /* TeamCompositionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC825EF279FF82E005558C6 /* TeamCompositionViewController.swift */; };
+		CEFEC21B27A9741E000418FC /* ExtensionTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFEC21A27A9741E000418FC /* ExtensionTableView.swift */; };
 		F334B94F65103BCD14D1F578 /* Pods_P12_nakache_jeremyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7981ECD632A197674E01A533 /* Pods_P12_nakache_jeremyTests.framework */; };
 		F50D6B1D760753B2327703CA /* Pods_P12_nakache_jeremy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F813A6F773876FD0B645BE41 /* Pods_P12_nakache_jeremy.framework */; };
 /* End PBXBuildFile section */
@@ -79,9 +86,13 @@
 		CE2B9F20279F0F32009530C2 /* P12_nakache_jeremyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = P12_nakache_jeremyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE2B9F24279F0F32009530C2 /* P12_nakache_jeremyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P12_nakache_jeremyUITests.swift; sourceTree = "<group>"; };
 		CE2B9F26279F0F32009530C2 /* P12_nakache_jeremyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P12_nakache_jeremyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CE3FF0C527A7DF860075A0AA /* PlayerSquadTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSquadTableViewCell.swift; sourceTree = "<group>"; };
 		CE858C4F27A0015D00D62BCB /* PlayersStructJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersStructJson.swift; sourceTree = "<group>"; };
 		CE858C5127A0017600D62BCB /* PlayersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersRepository.swift; sourceTree = "<group>"; };
 		CE86303E27A2BD660040303B /* InfosStadiumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfosStadiumViewController.swift; sourceTree = "<group>"; };
+		CE8C665827AD318A00B22C2F /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		CE8C665D27AD368D00B22C2F /* SportMarseille.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportMarseille.swift; sourceTree = "<group>"; };
+		CE8C665F27AD495900B22C2F /* Marseille.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = Marseille.geojson; sourceTree = "<group>"; };
 		CE994365279F115C000CB159 /* PickerViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewData.swift; sourceTree = "<group>"; };
 		CE994368279F1182000CB159 /* StandingsStructJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StandingsStructJson.swift; path = P12_nakache_jeremy/Model/StandingsStructJson.swift; sourceTree = SOURCE_ROOT; };
 		CE99436A279F1198000CB159 /* StandingsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingsRepository.swift; sourceTree = "<group>"; };
@@ -97,7 +108,10 @@
 		CE994381279F132A000CB159 /* DetailTeamSelectedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTeamSelectedViewController.swift; sourceTree = "<group>"; };
 		CE994385279F1368000CB159 /* LiveResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveResultViewController.swift; sourceTree = "<group>"; };
 		CE994387279F1384000CB159 /* MatchDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDetailViewController.swift; sourceTree = "<group>"; };
+		CE9BC00927AA859F00399A66 /* EventsJsonStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsJsonStruct.swift; sourceTree = "<group>"; };
+		CE9BC00B27AA86BC00399A66 /* EventsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsRepository.swift; sourceTree = "<group>"; };
 		CEC825EF279FF82E005558C6 /* TeamCompositionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCompositionViewController.swift; sourceTree = "<group>"; };
+		CEFEC21A27A9741E000418FC /* ExtensionTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionTableView.swift; sourceTree = "<group>"; };
 		F813A6F773876FD0B645BE41 /* Pods_P12_nakache_jeremy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_P12_nakache_jeremy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -198,6 +212,7 @@
 				CE99437A279F12AF000CB159 /* HomeViewController.swift */,
 				CE99437C279F12D5000CB159 /* Standing */,
 				CE994384279F1348000CB159 /* Result */,
+				CE8C665727AD315D00B22C2F /* Map */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -216,10 +231,13 @@
 			isa = PBXGroup;
 			children = (
 				CE994365279F115C000CB159 /* PickerViewData.swift */,
+				CEFEC21A27A9741E000418FC /* ExtensionTableView.swift */,
 				CE994367279F116D000CB159 /* Standing */,
 				CE99436E279F11C3000CB159 /* Teams */,
 				CE994373279F1215000CB159 /* Result */,
 				CE858C4E27A0013500D62BCB /* PlayersSquads */,
+				CE9BC00827AA855800399A66 /* EventsInGame */,
+				CE8C665A27AD319700B22C2F /* Map */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -229,8 +247,26 @@
 			children = (
 				CE858C4F27A0015D00D62BCB /* PlayersStructJson.swift */,
 				CE858C5127A0017600D62BCB /* PlayersRepository.swift */,
+				CE3FF0C527A7DF860075A0AA /* PlayerSquadTableViewCell.swift */,
 			);
 			path = PlayersSquads;
+			sourceTree = "<group>";
+		};
+		CE8C665727AD315D00B22C2F /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				CE8C665827AD318A00B22C2F /* MapViewController.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		CE8C665A27AD319700B22C2F /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				CE8C665D27AD368D00B22C2F /* SportMarseille.swift */,
+				CE8C665F27AD495900B22C2F /* Marseille.geojson */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 		CE994367279F116D000CB159 /* Standing */ = {
@@ -281,6 +317,15 @@
 				CE994387279F1384000CB159 /* MatchDetailViewController.swift */,
 			);
 			path = Result;
+			sourceTree = "<group>";
+		};
+		CE9BC00827AA855800399A66 /* EventsInGame */ = {
+			isa = PBXGroup;
+			children = (
+				CE9BC00927AA859F00399A66 /* EventsJsonStruct.swift */,
+				CE9BC00B27AA86BC00399A66 /* EventsRepository.swift */,
+			);
+			path = EventsInGame;
 			sourceTree = "<group>";
 		};
 		DC434ED04103E450EFBE5B43 /* Pods */ = {
@@ -407,6 +452,7 @@
 			files = (
 				CE2B9F10279F0F31009530C2 /* LaunchScreen.storyboard in Resources */,
 				CE2B9F0D279F0F31009530C2 /* Assets.xcassets in Resources */,
+				CE8C666027AD4BEE00B22C2F /* Marseille.geojson in Resources */,
 				CE2B9F08279F0F2F009530C2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -538,23 +584,29 @@
 				CEC825F0279FF82E005558C6 /* TeamCompositionViewController.swift in Sources */,
 				CE994372279F120A000CB159 /* TeamsRepository.swift in Sources */,
 				CE994380279F130F000CB159 /* StandingViewController.swift in Sources */,
+				CEFEC21B27A9741E000418FC /* ExtensionTableView.swift in Sources */,
 				CE2B9F01279F0F2F009530C2 /* AppDelegate.swift in Sources */,
 				CE994382279F132A000CB159 /* DetailTeamSelectedViewController.swift in Sources */,
+				CE9BC00C27AA86BC00399A66 /* EventsRepository.swift in Sources */,
 				CE858C5027A0015D00D62BCB /* PlayersStructJson.swift in Sources */,
 				CE99437E279F12ED000CB159 /* FormViewController.swift in Sources */,
 				CE994377279F1250000CB159 /* ResultStructJson.swift in Sources */,
 				CE858C5227A0017600D62BCB /* PlayersRepository.swift in Sources */,
 				CE994370279F11F6000CB159 /* TeamsStructJson.swift in Sources */,
 				CE99436B279F1198000CB159 /* StandingsRepository.swift in Sources */,
+				CE3FF0C627A7DF860075A0AA /* PlayerSquadTableViewCell.swift in Sources */,
 				CE99436D279F11AD000CB159 /* StandingTableViewCell.swift in Sources */,
 				CE2B9F03279F0F2F009530C2 /* SceneDelegate.swift in Sources */,
 				CE994386279F1368000CB159 /* LiveResultViewController.swift in Sources */,
 				CE86303F27A2BD660040303B /* InfosStadiumViewController.swift in Sources */,
 				CE994366279F115C000CB159 /* PickerViewData.swift in Sources */,
+				CE8C665E27AD368D00B22C2F /* SportMarseille.swift in Sources */,
 				CE994369279F1182000CB159 /* StandingsStructJson.swift in Sources */,
 				CE994375279F123A000CB159 /* ResultRepository.swift in Sources */,
 				CE994379279F126D000CB159 /* ResultTableViewCell.swift in Sources */,
+				CE8C665927AD318A00B22C2F /* MapViewController.swift in Sources */,
 				CE994388279F1384000CB159 /* MatchDetailViewController.swift in Sources */,
+				CE9BC00A27AA859F00399A66 /* EventsJsonStruct.swift in Sources */,
 				CE99437B279F12AF000CB159 /* HomeViewController.swift in Sources */,
 				CE2B9F0B279F0F2F009530C2 /* P12_nakache_jeremy.xcdatamodeld in Sources */,
 			);

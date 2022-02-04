@@ -64,9 +64,10 @@ class FormViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
         if component == 0 {
             pickerView.reloadComponent(1)
-            ///pickerView.selectRow(0, inComponent: 1, animated: false)
+            pickerView.selectRow(0, inComponent: 1, animated: false)
         }
         if component == 1 {
             
@@ -88,7 +89,6 @@ class FormViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         if let nextViewController = segue.destination as? StandingViewController {
             nextViewController.standings = standings
             nextViewController.selectedLigue = selectedLigue
-           // nextViewController.selectedLigueId = selectedLigueId
         }
     }
     

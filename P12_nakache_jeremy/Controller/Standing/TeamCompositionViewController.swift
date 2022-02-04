@@ -7,11 +7,14 @@
 
 import UIKit
 
+
+
 class TeamCompositionViewController: UIViewController {
 
 
     @IBOutlet weak var compositionTeam: UITableView!
     
+   
     var playersRepository = PlayersRepository()
     
     var playersSquad = [Player]() {
@@ -19,6 +22,7 @@ class TeamCompositionViewController: UIViewController {
             compositionTeam.reloadData()
         }
     }
+    var playerSection = [Any]()
     
     
     var idTeam: Int? {
@@ -31,7 +35,7 @@ class TeamCompositionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         compositionTeam.dataSource = self
-        
+        compositionTeam.delegate = self
     }
     
     func getDataPlayers(){
@@ -41,13 +45,28 @@ class TeamCompositionViewController: UIViewController {
             guard let players = result.response.first?.players else { return }
             DispatchQueue.main.async {
                 self.playersSquad = players
+//                for player in self.playersSquad {
+//                    let section = "\(player.position) : \(player.name)"
+//                    self.playerSection.append(section)
+//
+//                }
+//                let stringSection = "\(self.playerSection)"
+//                print (stringSection)
             }
         }
     }
 
 }
+
+extension TeamCompositionViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
+    }
+}
+
 extension TeamCompositionViewController: UITableViewDataSource {
 
+    
         func numberOfSections(in tableView: UITableView) -> Int {
             return 1
         }
@@ -57,9 +76,23 @@ extension TeamCompositionViewController: UITableViewDataSource {
         }
 
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-             let cell = tableView.dequeueReusableCell(withIdentifier: "teamCell", for: indexPath)
-            cell.textLabel?.text = playersSquad[indexPath.row].name
+             guard let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerSquadTableViewCell", for: indexPath) as? PlayerSquadTableViewCell
+            else {
+                return UITableViewCell()
+            }
+            let playerSquad = playersSquad[indexPath.row]
+            let name = playerSquad.name
+            let image = playerSquad.photo
+            let age = playerSquad.age
+            let ageString = String(age)
+            let position = playerSquad.position
+            if let numberInt = playerSquad.number {
+                let numberString = String(numberInt)
+            
+            
+            cell.configure(name: name, image: image, age: ageString, position: position, number: numberString )
+           
+        }
             return cell
         }
-
-    }
+        }
