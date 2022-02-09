@@ -13,17 +13,16 @@ class MatchDetailViewController: UIViewController {
     
     @IBOutlet weak var eventsTableView: UITableView!
     
-    var eventsRepository = EventsRepository()
+    private var eventsRepository = EventsRepository()
     var results = [ResponseFixture]()
-    var events = [ResponseEvents]()
-    var score = ""
+    private var events = [ResponseEvents]()
+    private var score = ""
     
     @IBOutlet weak var nameTeamHomeLabel: UILabel!
     @IBOutlet weak var nameTeamAwayLabel: UILabel!
     @IBOutlet weak var logoTeamHome: UIImageView!
     @IBOutlet weak var logoTeamAway: UIImageView!
     @IBOutlet weak var scoreLabel: UILabel!
-    
     @IBOutlet weak var scheduleGameLabel: UILabel!
     @IBOutlet weak var statusGameLabel: UILabel!
     @IBOutlet weak var elapsedTimeGameLabel: UILabel!
@@ -36,7 +35,7 @@ class MatchDetailViewController: UIViewController {
         
         configure()
         getEvent()
-      
+        
     }
     private func configure(){
         
@@ -67,6 +66,8 @@ class MatchDetailViewController: UIViewController {
         }
         if let elapsedTime = results.first?.fixture.status.elapsed {
             elapsedTimeGameLabel.text = "\(elapsedTime)'"
+        } else {
+            elapsedTimeGameLabel.text = "0'"
         }
         getScore()
     }
@@ -131,36 +132,36 @@ extension MatchDetailViewController: UITableViewDelegate {
 }
 
 extension MatchDetailViewController: UITableViewDataSource {
-
     
-        func numberOfSections(in tableView: UITableView) -> Int {
-            return 1
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return events.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "eventsCell", for: indexPath)
+        
+        let event = events[indexPath.row]
+        let typeEvent = event.type
+        let playerEvent = event.player.name
+        let typeDetailEvent = event.detail
+        let timeEvent = event.time.elapsed
+        
+        let teamHome = results.first?.teams.home.name
+        let teamEvent = event.team.name
+        
+        if teamEvent == teamHome {
+            cell.textLabel?.textAlignment = .left
+        } else {
+            cell.textLabel?.textAlignment = .right
         }
-
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return events.count
-        }
-
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-              let cell = tableView.dequeueReusableCell(withIdentifier: "eventsCell", for: indexPath)
-                    
-            let event = events[indexPath.row]
-            let typeEvent = event.type
-            let playerEvent = event.player.name
-            let typeDetailEvent = event.detail
-            let timeEvent = event.time.elapsed
-            
-            let teamHome = results.first?.teams.home.name
-            let teamEvent = event.team.name
-            
-            if teamEvent == teamHome {
-                cell.textLabel?.textAlignment = .left
-            } else {
-                cell.textLabel?.textAlignment = .right
-            }
-            
-            cell.textLabel?.text = "\(timeEvent ?? 0)' \(playerEvent ?? "") :\n\(typeEvent), \(typeDetailEvent)"
-                    return cell
-        }
-           
-        }
+        
+        cell.textLabel?.text = "\(timeEvent ?? 0)' \(playerEvent ?? "") :\n\(typeEvent), \(typeDetailEvent)"
+        return cell
+    }
+    
+}

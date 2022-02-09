@@ -9,23 +9,20 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
-let myNotificationKey = "team.notificationKey"
 
 class DetailTeamSelectedViewController: UIViewController {
     
     
     var standing = [Standing]()
-    var teamRepository = TeamsRepository()
+    private var teamRepository = TeamsRepository()
     
     private let infoViewSegmentControlIndex = 0
     private let teamViewSegmentControlIndex = 1
     
     @IBOutlet weak var standingTeamSelectedLabel: UILabel!
-    
     @IBOutlet weak var nameTeamSelected: UILabel!
     @IBOutlet weak var foundInDateTeamSelected: UILabel!
     @IBOutlet weak var logoTeamImageView: UIImageView!
-    
     @IBOutlet weak var viewToSwitch: UIView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
@@ -70,10 +67,10 @@ class DetailTeamSelectedViewController: UIViewController {
         updateView()
     }
     
-    func updateView() {
+    private func updateView() {
         infosStadiumViewController.view.isHidden = !(segmentedControl.selectedSegmentIndex == 0)
         teamCompositionViewController.view.isHidden = (segmentedControl.selectedSegmentIndex == 0)
-
+        
     }
     private func setupSegmentedControl(){
         segmentedControl.removeAllSegments()

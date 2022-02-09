@@ -25,9 +25,9 @@ class HomeViewController: UIViewController {
         getResultData()
         
     }
-    func getCurrentShortDate() {
+    private func getCurrentShortDate() {
         let todaysDate = NSDate()
-
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         dateToday = dateFormatter.string(from: todaysDate as Date)
@@ -40,32 +40,15 @@ class HomeViewController: UIViewController {
             DispatchQueue.main.async { [weak self] in
                 self?.results = result.response
                 self?.performSegue(withIdentifier: "SegueToResultDay", sender: self)
-                self?.leagues()
             }
         }
     }
     
-    func leagues() {
-        let league = results
-        for league in league {
-            let leagues = league.league.name
-            let fixture = league.fixture.id
-            let leagueFixt = [leagues: fixture]
-            self.league.append(leagues)
-            self.fixture.append(fixture)
-            self.leagueFixture.append(leagueFixt)
-            
-        }
-//        print (self.league)
-//        print (self.fixture)
-//        print (self.leagueFixture.count)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SegueToResultDay" {
-        if let nextViewController = segue.destination as? LiveResultViewController {
-            nextViewController.results = results
-        }
+            if let nextViewController = segue.destination as? LiveResultViewController {
+                nextViewController.results = results
+            }
         }
     }
     

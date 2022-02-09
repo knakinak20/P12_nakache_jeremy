@@ -74,13 +74,21 @@ struct FixtureGoals : Decodable{
 }
 
 // MARK: - League
-struct FixtureLeague : Decodable{
+struct FixtureLeague : Decodable, Hashable {
     let id: Int
     let name, country: String
     let logo: String
     let flag: String?
     let season: Int
     let round: String
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
+    static func == (lhs: FixtureLeague, rhs: FixtureLeague) -> Bool {
+        return lhs.id == rhs.id
+    }
 }
 
 // MARK: - Score

@@ -10,14 +10,13 @@ import UIKit
 class StandingViewController: UIViewController {
     
     @IBOutlet weak var standingL1TableView: UITableView!
- 
+    
     
     private var repositoryStanding = StandingsRepository()
     private var teamRepository = TeamsRepository()
     var standings = [Standing]()
-    var team = [Team]()
+    //var team = [Team]()
     var selectedLigue = ""
-   // var selectedTeamId : Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +25,7 @@ class StandingViewController: UIViewController {
         
         self.standingL1TableView.delegate = self
         self.standingL1TableView.dataSource = self
-
+        
         standingL1TableView.reloadData()
     }
     
@@ -47,11 +46,11 @@ extension StandingViewController: UITableViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if segue.identifier == "SegueToDetail" {
             if let indexPath = self.standingL1TableView.indexPathForSelectedRow {
-            let nextViewController = segue.destination as! DetailTeamSelectedViewController
-            nextViewController.standing = [standings[indexPath.row]]
+                let nextViewController = segue.destination as! DetailTeamSelectedViewController
+                nextViewController.standing = [standings[indexPath.row]]
             }
         }
-}
+    }
     
 }
 
@@ -71,7 +70,6 @@ extension StandingViewController: UITableViewDataSource {
         }
         let standingRow = standings[indexPath.row]
         let rank = String(standingRow.rank)
-        let nameTeam = standingRow.team.name!
         let points = String(standingRow.points)
         let played = String(standingRow.all.played)
         let win = String(standingRow.all.win)
@@ -79,9 +77,11 @@ extension StandingViewController: UITableViewDataSource {
         let lose = String(standingRow.all.lose)
         let goalsDiff = String(standingRow.goalsDiff)
         let logoUrl = standingRow.team.logo
-       // selectedTeamId = standingRow.team.id!
         
-        cell.configure(rank: rank, nameTeam: nameTeam, point: points, played: played, win: win, draw: draw, lose: lose, goalsDiff: goalsDiff,logoUrl: logoUrl)
+        if  let nameTeam = standingRow.team.name {
+            cell.configure(rank: rank, nameTeam: nameTeam, point: points, played: played, win: win, draw: draw, lose: lose, goalsDiff: goalsDiff,logoUrl: logoUrl)
+            
+        }
         return cell
     }
     

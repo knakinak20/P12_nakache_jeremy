@@ -15,8 +15,7 @@ class FormViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
     private var selectedLigue = ""
     private var selectedLigueId = 0
     
-    @IBOutlet var sideMenuBtn: UIBarButtonItem!
-    
+    @IBOutlet weak var button: UIButton!
     @IBOutlet weak var pickerView: UIPickerView!
     
     
@@ -26,9 +25,9 @@ class FormViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         pickerView.delegate = self
         pickerView.dataSource = self
         
-        // not sure if necessary
-        pickerView.reloadAllComponents()
-        pickerView.selectRow(0, inComponent: 0, animated: false)
+        selectedLigueId = 140
+        
+        button.layer.cornerRadius = button.frame.height/2
         
     }
     
@@ -62,23 +61,29 @@ class FormViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
             return pickerViewData.countryPickerData[selectedRowInFirstComponent].1[safeRowIndex]
         }
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         if component == 0 {
             pickerView.reloadComponent(1)
             pickerView.selectRow(0, inComponent: 1, animated: false)
+            
+            chooseSelectedRow()
         }
         if component == 1 {
             
-            let selection1 = pickerView.selectedRow(inComponent: 0)
-            let selection2 = pickerView.selectedRow(inComponent: 1)
-            let dataArray = pickerViewData.countryPickerData[selection1]
-            let dataArraySelected = dataArray.1
-            let selectedrow = dataArraySelected[selection2]
-            selectedLigue = selectedrow
-            getIdLeague(with: selectedLigue)
+            chooseSelectedRow()
         }
+    }
+    
+    func chooseSelectedRow () {
+        let selection1 = pickerView.selectedRow(inComponent: 0)
+        let selection2 = pickerView.selectedRow(inComponent: 1)
+        let dataArray = pickerViewData.countryPickerData[selection1]
+        let dataArraySelected = dataArray.1
+        let selectedrow = dataArraySelected[selection2]
+        selectedLigue = selectedrow
+        getIdLeague(with: selectedLigue)
     }
     
     @IBAction func tapbutton(_ sender: Any) {
@@ -161,9 +166,10 @@ class FormViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         case "Liga de Honra":
             selectedLigueId = 95
         default:
-            print ("alert") // to do
+            selectedLigueId = 140
         }
     }
 }
+
 
 

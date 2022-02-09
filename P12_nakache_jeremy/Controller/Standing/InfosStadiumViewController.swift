@@ -16,7 +16,7 @@ class InfosStadiumViewController: UIViewController {
             update()
         }
     }
-    var teamRepository = TeamsRepository()
+    private var teamRepository = TeamsRepository()
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var nameStadium: UILabel!
     @IBOutlet weak var addressStadium: UILabel!
@@ -29,9 +29,9 @@ class InfosStadiumViewController: UIViewController {
         super.viewDidLoad()
         imageStadium.alpha = 0.6
     }
-
     
-    func update() {
+    
+    private func update() {
         guard let id = standing.first?.team.id else { return }
         
         teamRepository.getDataTeams(endPoint: "teams?id=\(id)") { result in
@@ -50,7 +50,7 @@ class InfosStadiumViewController: UIViewController {
         self.capacityStadium.text = "\(responseTeam.venue.capacity) places"
         self.surfaceStadium.text = "surface \(responseTeam.venue.surface)"
         let urlLogo = responseTeam.venue.image
-        getImage(with: urlLogo, imageView: (self.imageStadium)!)
+        getImage(with: urlLogo, imageView: self.imageStadium)
     }
     
     

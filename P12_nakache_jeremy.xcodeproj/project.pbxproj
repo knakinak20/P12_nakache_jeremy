@@ -42,7 +42,6 @@
 		CE9BC00A27AA859F00399A66 /* EventsJsonStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9BC00927AA859F00399A66 /* EventsJsonStruct.swift */; };
 		CE9BC00C27AA86BC00399A66 /* EventsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9BC00B27AA86BC00399A66 /* EventsRepository.swift */; };
 		CEC825F0279FF82E005558C6 /* TeamCompositionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC825EF279FF82E005558C6 /* TeamCompositionViewController.swift */; };
-		CEFEC21B27A9741E000418FC /* ExtensionTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFEC21A27A9741E000418FC /* ExtensionTableView.swift */; };
 		F334B94F65103BCD14D1F578 /* Pods_P12_nakache_jeremyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7981ECD632A197674E01A533 /* Pods_P12_nakache_jeremyTests.framework */; };
 		F50D6B1D760753B2327703CA /* Pods_P12_nakache_jeremy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F813A6F773876FD0B645BE41 /* Pods_P12_nakache_jeremy.framework */; };
 /* End PBXBuildFile section */
@@ -111,7 +110,6 @@
 		CE9BC00927AA859F00399A66 /* EventsJsonStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsJsonStruct.swift; sourceTree = "<group>"; };
 		CE9BC00B27AA86BC00399A66 /* EventsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsRepository.swift; sourceTree = "<group>"; };
 		CEC825EF279FF82E005558C6 /* TeamCompositionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCompositionViewController.swift; sourceTree = "<group>"; };
-		CEFEC21A27A9741E000418FC /* ExtensionTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionTableView.swift; sourceTree = "<group>"; };
 		F813A6F773876FD0B645BE41 /* Pods_P12_nakache_jeremy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_P12_nakache_jeremy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -231,7 +229,6 @@
 			isa = PBXGroup;
 			children = (
 				CE994365279F115C000CB159 /* PickerViewData.swift */,
-				CEFEC21A27A9741E000418FC /* ExtensionTableView.swift */,
 				CE994367279F116D000CB159 /* Standing */,
 				CE99436E279F11C3000CB159 /* Teams */,
 				CE994373279F1215000CB159 /* Result */,
@@ -584,7 +581,6 @@
 				CEC825F0279FF82E005558C6 /* TeamCompositionViewController.swift in Sources */,
 				CE994372279F120A000CB159 /* TeamsRepository.swift in Sources */,
 				CE994380279F130F000CB159 /* StandingViewController.swift in Sources */,
-				CEFEC21B27A9741E000418FC /* ExtensionTableView.swift in Sources */,
 				CE2B9F01279F0F2F009530C2 /* AppDelegate.swift in Sources */,
 				CE994382279F132A000CB159 /* DetailTeamSelectedViewController.swift in Sources */,
 				CE9BC00C27AA86BC00399A66 /* EventsRepository.swift in Sources */,
