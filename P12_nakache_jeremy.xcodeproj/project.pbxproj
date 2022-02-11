@@ -14,10 +14,15 @@
 		CE2B9F0B279F0F2F009530C2 /* P12_nakache_jeremy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE2B9F09279F0F2F009530C2 /* P12_nakache_jeremy.xcdatamodeld */; };
 		CE2B9F0D279F0F31009530C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE2B9F0C279F0F31009530C2 /* Assets.xcassets */; };
 		CE2B9F10279F0F31009530C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE2B9F0E279F0F31009530C2 /* LaunchScreen.storyboard */; };
-		CE2B9F1B279F0F32009530C2 /* P12_nakache_jeremyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2B9F1A279F0F32009530C2 /* P12_nakache_jeremyTests.swift */; };
+		CE2B9F1B279F0F32009530C2 /* AlamofireStandingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2B9F1A279F0F32009530C2 /* AlamofireStandingTest.swift */; };
 		CE2B9F25279F0F32009530C2 /* P12_nakache_jeremyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2B9F24279F0F32009530C2 /* P12_nakache_jeremyUITests.swift */; };
 		CE2B9F27279F0F32009530C2 /* P12_nakache_jeremyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2B9F26279F0F32009530C2 /* P12_nakache_jeremyUITestsLaunchTests.swift */; };
 		CE3FF0C627A7DF860075A0AA /* PlayerSquadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3FF0C527A7DF860075A0AA /* PlayerSquadTableViewCell.swift */; };
+		CE52123B27B6572800D39C1E /* MockUrlProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE52123A27B6572800D39C1E /* MockUrlProtocol.swift */; };
+		CE52123D27B6689D00D39C1E /* AlamofireTeamsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE52123C27B6689D00D39C1E /* AlamofireTeamsTest.swift */; };
+		CE52123F27B66D0700D39C1E /* AlamofireResultMatchTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE52123E27B66D0700D39C1E /* AlamofireResultMatchTest.swift */; };
+		CE52124127B66EEF00D39C1E /* AlamofirePlayerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE52124027B66EEF00D39C1E /* AlamofirePlayerTest.swift */; };
+		CE52124327B6749600D39C1E /* AlamofireEventTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE52124227B6749600D39C1E /* AlamofireEventTest.swift */; };
 		CE858C5027A0015D00D62BCB /* PlayersStructJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE858C4F27A0015D00D62BCB /* PlayersStructJson.swift */; };
 		CE858C5227A0017600D62BCB /* PlayersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE858C5127A0017600D62BCB /* PlayersRepository.swift */; };
 		CE86303F27A2BD660040303B /* InfosStadiumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE86303E27A2BD660040303B /* InfosStadiumViewController.swift */; };
@@ -81,11 +86,16 @@
 		CE2B9F0F279F0F31009530C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE2B9F11279F0F31009530C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE2B9F16279F0F32009530C2 /* P12_nakache_jeremyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = P12_nakache_jeremyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE2B9F1A279F0F32009530C2 /* P12_nakache_jeremyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P12_nakache_jeremyTests.swift; sourceTree = "<group>"; };
+		CE2B9F1A279F0F32009530C2 /* AlamofireStandingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireStandingTest.swift; sourceTree = "<group>"; };
 		CE2B9F20279F0F32009530C2 /* P12_nakache_jeremyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = P12_nakache_jeremyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE2B9F24279F0F32009530C2 /* P12_nakache_jeremyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P12_nakache_jeremyUITests.swift; sourceTree = "<group>"; };
 		CE2B9F26279F0F32009530C2 /* P12_nakache_jeremyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P12_nakache_jeremyUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		CE3FF0C527A7DF860075A0AA /* PlayerSquadTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSquadTableViewCell.swift; sourceTree = "<group>"; };
+		CE52123A27B6572800D39C1E /* MockUrlProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUrlProtocol.swift; sourceTree = "<group>"; };
+		CE52123C27B6689D00D39C1E /* AlamofireTeamsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireTeamsTest.swift; sourceTree = "<group>"; };
+		CE52123E27B66D0700D39C1E /* AlamofireResultMatchTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireResultMatchTest.swift; sourceTree = "<group>"; };
+		CE52124027B66EEF00D39C1E /* AlamofirePlayerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofirePlayerTest.swift; sourceTree = "<group>"; };
+		CE52124227B6749600D39C1E /* AlamofireEventTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireEventTest.swift; sourceTree = "<group>"; };
 		CE858C4F27A0015D00D62BCB /* PlayersStructJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersStructJson.swift; sourceTree = "<group>"; };
 		CE858C5127A0017600D62BCB /* PlayersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersRepository.swift; sourceTree = "<group>"; };
 		CE86303E27A2BD660040303B /* InfosStadiumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfosStadiumViewController.swift; sourceTree = "<group>"; };
@@ -190,7 +200,12 @@
 		CE2B9F19279F0F32009530C2 /* P12_nakache_jeremyTests */ = {
 			isa = PBXGroup;
 			children = (
-				CE2B9F1A279F0F32009530C2 /* P12_nakache_jeremyTests.swift */,
+				CE52123A27B6572800D39C1E /* MockUrlProtocol.swift */,
+				CE2B9F1A279F0F32009530C2 /* AlamofireStandingTest.swift */,
+				CE52123C27B6689D00D39C1E /* AlamofireTeamsTest.swift */,
+				CE52123E27B66D0700D39C1E /* AlamofireResultMatchTest.swift */,
+				CE52124027B66EEF00D39C1E /* AlamofirePlayerTest.swift */,
+				CE52124227B6749600D39C1E /* AlamofireEventTest.swift */,
 			);
 			path = P12_nakache_jeremyTests;
 			sourceTree = "<group>";
@@ -612,7 +627,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE2B9F1B279F0F32009530C2 /* P12_nakache_jeremyTests.swift in Sources */,
+				CE2B9F1B279F0F32009530C2 /* AlamofireStandingTest.swift in Sources */,
+				CE52124327B6749600D39C1E /* AlamofireEventTest.swift in Sources */,
+				CE52124127B66EEF00D39C1E /* AlamofirePlayerTest.swift in Sources */,
+				CE52123F27B66D0700D39C1E /* AlamofireResultMatchTest.swift in Sources */,
+				CE52123B27B6572800D39C1E /* MockUrlProtocol.swift in Sources */,
+				CE52123D27B6689D00D39C1E /* AlamofireTeamsTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

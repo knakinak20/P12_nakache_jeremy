@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - PlayersSquads
-struct PlayersSquads: Decodable {
+struct PlayersSquads: Codable {
     let get: String
     let parameters: PlayersParameters
     let errors: [String]
@@ -18,23 +18,23 @@ struct PlayersSquads: Decodable {
 }
 
 // MARK: - Paging
-struct PlayersPaging: Decodable {
+struct PlayersPaging: Codable {
     let current, total: Int
 }
 
 // MARK: - Parameters
-struct PlayersParameters: Decodable {
+struct PlayersParameters: Codable {
     let team: String
 }
 
 // MARK: - Response
-struct PlayersResponse: Decodable {
+struct PlayersResponse: Codable {
     let team: PlayersTeam
     let players: [Player]
 }
 
 // MARK: - Player
-struct Player: Decodable {
+struct Player: Codable {
     let id: Int
     let name: String
     let age: Int
@@ -45,7 +45,7 @@ struct Player: Decodable {
 
 
 // MARK: - Team
-struct PlayersTeam: Decodable {
+struct PlayersTeam: Codable {
     let id: Int
     let name: String
     let logo: String

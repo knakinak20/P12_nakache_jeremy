@@ -6,37 +6,27 @@
 //
 
 import Foundation
+import Alamofire
 
 class StandingsRepository {
 
-    func getDataStandings(endPoint: String, completion: @escaping ((StandingsStructJson) -> Void)) {
-        let header1 = "8205d1fbdf74d31764e3ad69e52a433b"
-        let header2 = "v3.football.api-sports.io"
+    private let manager: Session
+    
+    init(manager: Session = .default) {
+        self.manager = manager
+    }
+    
+    func getDataStandings(endPoint: String, completion: @escaping ((Result <StandingsStructJson, Error>) -> Void)) {
+        let header : HTTPHeaders = ["x-rapidapi-key": "8205d1fbdf74d31764e3ad69e52a433b"]
         let url = "https://v3.football.api-sports.io/\(endPoint)"
         
-        
-        var request = URLRequest(url: URL(string: url)!,timeoutInterval: Double.infinity)
-        request.addValue(header1, forHTTPHeaderField: "x-rapidapi-key")
-        request.addValue(header2, forHTTPHeaderField: "x-rapidapi-host")
-        
-        request.httpMethod = "GET"
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            if let data = data {
-                do {
-                    let decoder = JSONDecoder()
-                    decoder.keyDecodingStrategy = .convertFromSnakeCase
-                    let launch = try decoder.decode(StandingsStructJson.self, from: data)
-
-                    completion(launch)
-                 
-                } catch _ {
-                    return
-
-                }
+        manager.request(url, method: .get, encoding: URLEncoding.queryString, headers: header).validate().responseDecodable(of: StandingsStructJson.self) { (response) in
+            if let error = response.error {
+                completion (.failure(error))
+            } else if let standing = response.value {
+                completion (.success(standing))
             }
-
         }
-        task.resume()
+
     }
 }

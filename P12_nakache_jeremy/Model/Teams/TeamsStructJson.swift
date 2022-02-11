@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TeamsStructJson : Decodable{
+struct TeamsStructJson : Codable{
     let get: String?
     let parameters: ParametersTeam
     let errors: [String]
@@ -17,24 +17,24 @@ struct TeamsStructJson : Decodable{
 }
 
 // MARK: - Paging
-struct PagingTeam : Decodable{
+struct PagingTeam : Codable {
     let current, total: Int
 }
 
 // MARK: - Parameters
-struct ParametersTeam : Decodable{
+struct ParametersTeam : Codable{
     let id: String
 }
 
 
 // MARK: - Response
-struct ResponseTeam : Decodable{
+struct ResponseTeam : Codable{
     let team : Team
     let venue: Venue
 }
 
 // MARK: - Team
-struct Team : Decodable {
+struct Team : Codable {
     let id: Int
     let name: String
     let founded: Int?
@@ -42,7 +42,7 @@ struct Team : Decodable {
     let logo: String
 }
 
-struct Venue: Decodable {
+struct Venue: Codable {
     let id: Int
     let name : String
     let address: String

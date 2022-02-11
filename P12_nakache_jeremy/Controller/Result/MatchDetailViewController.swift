@@ -117,14 +117,20 @@ class MatchDetailViewController: UIViewController {
         
         eventsRepository.getEvents(endPoint: "fixtures/events?fixture=\(idFixture)") { result in
             DispatchQueue.main.async {
-                self.events = result.response
+                switch result {
+                case .success(let event) :
+                    self.events = event.response
                 self.eventsTableView.reloadData()
+                case .failure(_):
+                    print("alert")
+                    break
             }
         }
     }
     
+    
 }
-
+}
 extension MatchDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50

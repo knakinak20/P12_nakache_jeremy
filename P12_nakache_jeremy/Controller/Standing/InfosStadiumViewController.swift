@@ -35,11 +35,17 @@ class InfosStadiumViewController: UIViewController {
         guard let id = standing.first?.team.id else { return }
         
         teamRepository.getDataTeams(endPoint: "teams?id=\(id)") { result in
-            guard  let responseTeam = result.response.first else { return }
             DispatchQueue.main.async {
+                switch result {
+                case .success(let team) :
+                guard  let responseTeam = team.response.first else { return }
                 self.updateView(with: responseTeam)
+                case .failure(_):
+                    print("alert")
+                    break
             }
         }
+    }
     }
     
     private func updateView(with responseTeam: ResponseTeam) {

@@ -9,6 +9,7 @@ import UIKit
 
 class LiveResultViewController: UIViewController {
     
+    
     var results = [ResponseFixture]() {
         didSet {
             fixtureMap = [FixtureLeague: [ResponseFixture]]()
@@ -23,8 +24,10 @@ class LiveResultViewController: UIViewController {
             }
             
             fixtureMap = fixtureMap.filter { $0.key.id == 39 || $0.key.id == 66 || $0.key.id == 140 || $0.key.id == 269 || $0.key.id == 142 || $0.key.id == 40 || $0.key.id == 43 || $0.key.id == 699 || $0.key.id == 135 || $0.key.id == 136 || $0.key.id == 138 || $0.key.id == 139 || $0.key.id == 128 || $0.key.id == 134 || $0.key.id == 132 || $0.key.id == 129 || $0.key.id == 61 || $0.key.id == 62 || $0.key.id == 63 || $0.key.id == 64 || $0.key.id == 78 || $0.key.id == 79 || $0.key.id == 80 || $0.key.id == 82 || $0.key.id == 88 || $0.key.id == 91 || $0.key.id == 94 || $0.key.id == 95 }
+           
         }
     }
+    
     
     private var fixtureMap = [FixtureLeague: [ResponseFixture]]()
     
@@ -45,7 +48,6 @@ class LiveResultViewController: UIViewController {
         
         resultTableView.reloadData()
     }
-    
     
 }
 extension LiveResultViewController: UITableViewDelegate {
@@ -86,7 +88,7 @@ extension LiveResultViewController: UITableViewDataSource {
         }
         let index = fixtureMap.index(fixtureMap.startIndex, offsetBy: section)
         let league = fixtureMap[index]
-        
+
         return league.value.count
     }
     

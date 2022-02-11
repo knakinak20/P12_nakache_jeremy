@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct StandingsStructJson: Decodable {
+struct StandingsStructJson: Codable {
     let get: String
     let parameters: Parameters
     let errors: [String]
@@ -17,20 +17,20 @@ struct StandingsStructJson: Decodable {
 }
 
 // MARK: - Paging
-struct Paging : Decodable {
+struct Paging : Codable {
     let current, total: Int
 }
 
 // MARK: - Parameters
-struct Parameters: Decodable {
+struct Parameters: Codable {
     let league, season: String
 }
 
-struct Response : Decodable{
+struct Response : Codable{
     let league : League
 }
 
-struct League: Decodable {
+struct League: Codable {
     
     let id: Int?
     let name, country: String?
@@ -41,7 +41,7 @@ struct League: Decodable {
 }
 
 // MARK: - Standing
-struct Standing: Decodable {
+struct Standing: Codable {
     let rank: Int
     let team: TeamStanding
     let points, goalsDiff: Int
@@ -51,19 +51,19 @@ struct Standing: Decodable {
 }
 
 // MARK: - All
-struct All: Decodable {
+struct All: Codable {
     let played, win, draw, lose: Int
     let goals: Goals
 }
 
 // MARK: - Goals
-struct Goals: Decodable {
+struct Goals: Codable {
     let _for: Int?
     let against: Int?
 }
 
 // MARK: - Team
- struct TeamStanding: Decodable {
+ struct TeamStanding: Codable {
     let id: Int?
     let name: String?
     let logo: String

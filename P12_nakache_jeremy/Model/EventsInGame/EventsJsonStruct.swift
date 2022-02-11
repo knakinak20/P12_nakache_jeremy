@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - Welcome
-struct EventsJsonStruct: Decodable {
+struct EventsJsonStruct: Codable {
     let get: String
     let parameters: ParametersEvents
     let errors: [String]
@@ -18,17 +18,17 @@ struct EventsJsonStruct: Decodable {
 }
 
 // MARK: - Paging
-struct PagingEvents: Decodable {
+struct PagingEvents: Codable {
     let current, total: Int
 }
 
 // MARK: - Parameters
-struct ParametersEvents: Decodable {
+struct ParametersEvents: Codable {
     let fixture: String
 }
 
 // MARK: - Response
-struct ResponseEvents: Decodable {
+struct ResponseEvents: Codable {
     let time: Time
     let team: TeamEvent
     let player, assist: Assist
@@ -37,20 +37,20 @@ struct ResponseEvents: Decodable {
 }
 
 // MARK: - Assist
-struct Assist: Decodable {
+struct Assist: Codable {
     let id: Int?
     let name: String?
 }
 
 // MARK: - Team
-struct TeamEvent: Decodable {
+struct TeamEvent: Codable {
     let id: Int
     let name: String
     let logo: String
 }
 
 // MARK: - Time
-struct Time: Decodable {
+struct Time: Codable {
     let elapsed: Int?
     let extra: Int?
 }

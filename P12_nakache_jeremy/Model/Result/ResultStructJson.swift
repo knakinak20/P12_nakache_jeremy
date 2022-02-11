@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - Welcome
-struct FixtureResponse: Decodable {
+struct FixtureResponse: Codable {
     let get: String
     let parameters: FixtureParameters
     let errors: [String]
@@ -18,19 +18,19 @@ struct FixtureResponse: Decodable {
 }
 
 // MARK: - Paging
-struct FixturePaging : Decodable{
+struct FixturePaging : Codable{
     let current, total: Int
 }
 
 // MARK: - Parameters
-struct FixtureParameters: Decodable {
+struct FixtureParameters: Codable {
     let date: String
     let timezone: String
 }
 
 
 // MARK: - Response
-struct ResponseFixture : Decodable{
+struct ResponseFixture : Codable{
     let fixture: Fixture
     let league: FixtureLeague
     let teams: Teams
@@ -39,7 +39,7 @@ struct ResponseFixture : Decodable{
 }
 
 // MARK: - Fixture
-struct Fixture : Decodable{
+struct Fixture : Codable{
     let id: Int
     let referee: String?
     let timezone: String
@@ -51,30 +51,34 @@ struct Fixture : Decodable{
 }
 
 // MARK: - Periods
-struct Periods : Decodable{
+struct Periods : Codable{
     let first, second: Int?
 }
 
 // MARK: - Status
-struct Status: Decodable {
+struct Status: Codable {
     let long: String
     let short: String
     let elapsed: Int?
 }
 
 // MARK: - Venue
-struct FixtureVenue : Decodable{
+struct FixtureVenue : Codable{
     let id: Int?
     let name, city: String?
 }
 
 // MARK: - Goals
-struct FixtureGoals : Decodable{
+struct FixtureGoals : Codable{
     let home, away: Int?
 }
 
 // MARK: - League
-struct FixtureLeague : Decodable, Hashable {
+struct FixtureLeague : Codable, Hashable, Comparable {
+    static func < (lhs: FixtureLeague, rhs: FixtureLeague) -> Bool {
+        return lhs.name < rhs.name 
+    }
+    
     let id: Int
     let name, country: String
     let logo: String
@@ -92,17 +96,17 @@ struct FixtureLeague : Decodable, Hashable {
 }
 
 // MARK: - Score
-struct Score : Decodable{
+struct Score : Codable{
     let halftime, fulltime, extratime, penalty: FixtureGoals
 }
 
 // MARK: - Teams
-struct Teams: Decodable {
+struct Teams: Codable {
     let home, away: Away
 }
 
 // MARK: - Away
-struct Away: Decodable {
+struct Away: Codable {
     let id: Int
     let name: String
     let logo: String

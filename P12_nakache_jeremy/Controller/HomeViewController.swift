@@ -38,12 +38,18 @@ class HomeViewController: UIViewController {
         
         resultRepository.getResults(endPoint: "fixtures?date=\(dateToday)&timezone=Europe/Paris") { [weak self] result in
             DispatchQueue.main.async { [weak self] in
-                self?.results = result.response
+                switch result {
+                case .success(let matchResult) :
+                self?.results = matchResult.response
                 self?.performSegue(withIdentifier: "SegueToResultDay", sender: self)
+                    
+                case .failure(_):
+                    print("alert")
+                    break
             }
         }
     }
-    
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SegueToResultDay" {
             if let nextViewController = segue.destination as? LiveResultViewController {

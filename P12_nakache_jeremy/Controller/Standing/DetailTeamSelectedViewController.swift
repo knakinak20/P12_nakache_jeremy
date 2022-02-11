@@ -132,13 +132,20 @@ class DetailTeamSelectedViewController: UIViewController {
             return }
         
         teamRepository.getDataTeams(endPoint: "teams?id=\(selectedTeamId)"){ [weak self] result in
-            if let response = result.response.first {
+           
                 DispatchQueue.main.async {
+                    switch result {
+                    case .success(let team) :
+                    if let response = team.response.first {
                     self?.nameTeamSelected.text = response.team.name
                     
-                    if let founded = result.response.first?.team.founded {
+                    if let founded = team.response.first?.team.founded {
                         self?.foundInDateTeamSelected.text = "Créé en \(founded)"
                     }
+                    }
+                    case .failure(_):
+                        print("alert")
+                        break
                 }
             }
         }

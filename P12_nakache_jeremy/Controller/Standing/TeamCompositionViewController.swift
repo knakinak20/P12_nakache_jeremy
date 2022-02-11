@@ -39,10 +39,17 @@ class TeamCompositionViewController: UIViewController {
         guard let idTeam = idTeam else { return }
         
         playersRepository.getPlayers(endPoint: "players/squads?team=\(idTeam)") { result in
-            guard let players = result.response.first?.players else { return }
+            
             DispatchQueue.main.async {
+                switch result {
+                case .success(let player) :
+                guard let players = player.response.first?.players else { return }
                 self.playersSquad = players
-                
+                    
+                case .failure(_):
+                    print("alert")
+                    break
+                }
             }
         }
     }
@@ -79,10 +86,9 @@ extension TeamCompositionViewController: UITableViewDataSource {
         let position = playerSquad.position
         if let numberInt = playerSquad.number {
             let numberString = String(numberInt)
-            
-            
-            cell.configure(name: name, image: image, age: ageString, position: position, number: numberString )
-            
+        cell.configure(name: name, image: image, age: ageString, position: position, number:  numberString)
+        } else {
+            cell.configure(name: name, image: image, age: ageString, position: position, number: "N/A")
         }
         return cell
     }

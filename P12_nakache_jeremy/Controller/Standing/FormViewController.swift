@@ -101,10 +101,16 @@ class FormViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
     private func getStanding() {
         repositoryStanding.getDataStandings(endPoint: "standings?league=\(selectedLigueId)&season=2021") { result in
             DispatchQueue.main.async {
-                if let response = result.response.first?.league.standings?.first {
+                switch result {
+                case .success(let standing) :
+                if let response = standing.response.first?.league.standings?.first {
                     self.standings = response.compactMap { $0.self}
                     self.performSegue(withIdentifier: "segueToStanding", sender: nil)
+                }
                     
+                case .failure(_):
+                    print("alert")
+                    break
                 }
             }
         }
