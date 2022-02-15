@@ -132,20 +132,20 @@ class DetailTeamSelectedViewController: UIViewController {
             return }
         
         teamRepository.getDataTeams(endPoint: "teams?id=\(selectedTeamId)"){ [weak self] result in
-           
-                DispatchQueue.main.async {
-                    switch result {
-                    case .success(let team) :
+            
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let team) :
                     if let response = team.response.first {
-                    self?.nameTeamSelected.text = response.team.name
-                    
-                    if let founded = team.response.first?.team.founded {
-                        self?.foundInDateTeamSelected.text = "Créé en \(founded)"
+                        self?.nameTeamSelected.text = response.team.name
+                        
+                        if let founded = team.response.first?.team.founded {
+                            self?.foundInDateTeamSelected.text = "Créé en \(founded)"
+                        }
                     }
-                    }
-                    case .failure(_):
-                        print("alert")
-                        break
+                case .failure(_):
+                    self?.alert()
+                    break
                 }
             }
         }
@@ -161,5 +161,12 @@ class DetailTeamSelectedViewController: UIViewController {
         removeViewController(childViewController: infosStadiumViewController)
         teamCompositionViewController.idTeam = standing.first?.team.id
         addViewControllerAsChildViewController(childViewController: teamCompositionViewController)
+    }
+    
+    private func alert() {
+        let  confirmationAlert = UIAlertController(title: "No internet connection detected" , message: "Please check your internet connection and try again", preferredStyle: .actionSheet)
+        confirmationAlert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action : UIAlertAction!) in }))
+        
+        present(confirmationAlert,animated: true, completion: nil)
     }
 }

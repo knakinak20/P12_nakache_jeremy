@@ -122,7 +122,7 @@ class MatchDetailViewController: UIViewController {
                     self.events = event.response
                 self.eventsTableView.reloadData()
                 case .failure(_):
-                    print("alert")
+                    self.alert()
                     break
             }
         }
@@ -168,6 +168,13 @@ extension MatchDetailViewController: UITableViewDataSource {
         
         cell.textLabel?.text = "\(timeEvent ?? 0)' \(playerEvent ?? "") :\n\(typeEvent), \(typeDetailEvent)"
         return cell
+    }
+    
+    private func alert() {
+        let  confirmationAlert = UIAlertController(title: "No internet connection detected" , message: "Please check your internet connection and try again", preferredStyle: .actionSheet)
+        confirmationAlert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action : UIAlertAction!) in }))
+        
+        present(confirmationAlert,animated: true, completion: nil)
     }
     
 }

@@ -17,6 +17,7 @@ class FormViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
     
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var pickerView: UIPickerView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     
     override func viewDidLoad() {
@@ -27,8 +28,14 @@ class FormViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         
         selectedLigueId = 140
         
-        button.layer.cornerRadius = button.frame.height/2
+        activityIndicator.isHidden = true
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        button.isUserInteractionEnabled = true
+        button.layer.opacity = 1
     }
     
     // Nombre de colonne dans le pickerView
@@ -87,6 +94,10 @@ class FormViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
     }
     
     @IBAction func tapbutton(_ sender: Any) {
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+        button.layer.opacity = 0.4
+        button.isUserInteractionEnabled = false
         getStanding()
     }
     
@@ -109,9 +120,13 @@ class FormViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
                 }
                     
                 case .failure(_):
-                    print("alert")
+                    self.alert()
                     break
                 }
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.isHidden = true
+                self.button.layer.opacity = 1
+                self.button.isUserInteractionEnabled = true
             }
         }
     }
@@ -174,6 +189,12 @@ class FormViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         default:
             selectedLigueId = 140
         }
+    }
+    private func alert() {
+        let  confirmationAlert = UIAlertController(title: "No internet connection detected" , message: "Please check your internet connection and try again", preferredStyle: .actionSheet)
+        confirmationAlert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action : UIAlertAction!) in }))
+        
+        present(confirmationAlert,animated: true, completion: nil)
     }
 }
 

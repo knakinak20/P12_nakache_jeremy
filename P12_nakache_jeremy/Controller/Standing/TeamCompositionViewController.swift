@@ -47,7 +47,7 @@ class TeamCompositionViewController: UIViewController {
                 self.playersSquad = players
                     
                 case .failure(_):
-                    print("alert")
+                    self.alert()
                     break
                 }
             }
@@ -91,5 +91,11 @@ extension TeamCompositionViewController: UITableViewDataSource {
             cell.configure(name: name, image: image, age: ageString, position: position, number: "N/A")
         }
         return cell
+    }
+    private func alert() {
+        let  confirmationAlert = UIAlertController(title: "No internet connection detected" , message: "Please check your internet connection and try again", preferredStyle: .actionSheet)
+        confirmationAlert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action : UIAlertAction!) in }))
+        
+        present(confirmationAlert,animated: true, completion: nil)
     }
 }

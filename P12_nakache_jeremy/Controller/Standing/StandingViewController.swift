@@ -12,10 +12,9 @@ class StandingViewController: UIViewController {
     @IBOutlet weak var standingL1TableView: UITableView!
     
     
-    private var repositoryStanding = StandingsRepository()
-    private var teamRepository = TeamsRepository()
+//    private var repositoryStanding = StandingsRepository()
+//    private var teamRepository = TeamsRepository()
     var standings = [Standing]()
-    //var team = [Team]()
     var selectedLigue = ""
     
     override func viewDidLoad() {

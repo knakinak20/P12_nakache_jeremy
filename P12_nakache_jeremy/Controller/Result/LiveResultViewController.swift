@@ -24,13 +24,14 @@ class LiveResultViewController: UIViewController {
             }
             
             fixtureMap = fixtureMap.filter { $0.key.id == 39 || $0.key.id == 66 || $0.key.id == 140 || $0.key.id == 269 || $0.key.id == 142 || $0.key.id == 40 || $0.key.id == 43 || $0.key.id == 699 || $0.key.id == 135 || $0.key.id == 136 || $0.key.id == 138 || $0.key.id == 139 || $0.key.id == 128 || $0.key.id == 134 || $0.key.id == 132 || $0.key.id == 129 || $0.key.id == 61 || $0.key.id == 62 || $0.key.id == 63 || $0.key.id == 64 || $0.key.id == 78 || $0.key.id == 79 || $0.key.id == 80 || $0.key.id == 82 || $0.key.id == 88 || $0.key.id == 91 || $0.key.id == 94 || $0.key.id == 95 }
-           
+            
+            orderedLeagueNames = fixtureMap.keys.sorted()
         }
     }
     
     
     private var fixtureMap = [FixtureLeague: [ResponseFixture]]()
-    
+    private var orderedLeagueNames = [FixtureLeague]()
     
     @IBOutlet weak var resultTableView: UITableView!
     
@@ -79,27 +80,27 @@ extension LiveResultViewController: UITableViewDelegate {
 extension LiveResultViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return fixtureMap.keys.count
+        return orderedLeagueNames.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard section < fixtureMap.keys.count else {
+        guard section < orderedLeagueNames.count else {
             return 0
         }
-        let index = fixtureMap.index(fixtureMap.startIndex, offsetBy: section)
+        let index = orderedLeagueNames[section]
         let league = fixtureMap[index]
 
-        return league.value.count
+        return league?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        guard section < fixtureMap.keys.count else {
+        guard section < orderedLeagueNames.count else {
             return "N/A"
         }
-        let index = fixtureMap.index(fixtureMap.startIndex, offsetBy: section)
-        let league = fixtureMap[index]
         
-        return league.key.name
+        let league = orderedLeagueNames[section]
+        
+        return league.name
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -113,10 +114,10 @@ extension LiveResultViewController: UITableViewDataSource {
         }
         
         
-        let index = fixtureMap.index(fixtureMap.startIndex, offsetBy: indexPath.section)
-        let fixtures = fixtureMap[index].value
+        let index = orderedLeagueNames[indexPath.section] //[fixtureMap.index(fixtureMap.startIndex, offsetBy: indexPath.section)
         
-        guard indexPath.row < fixtures.count else {
+        
+        guard let fixtures = fixtureMap[index], indexPath.row < fixtures.count else {
             return UITableViewCell()
         }
         

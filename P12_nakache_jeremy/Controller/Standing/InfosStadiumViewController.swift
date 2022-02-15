@@ -41,7 +41,7 @@ class InfosStadiumViewController: UIViewController {
                 guard  let responseTeam = team.response.first else { return }
                 self.updateView(with: responseTeam)
                 case .failure(_):
-                    print("alert")
+                    self.alert()
                     break
             }
         }
@@ -75,5 +75,11 @@ class InfosStadiumViewController: UIViewController {
             
         }
         
+    }
+    private func alert() {
+        let  confirmationAlert = UIAlertController(title: "No internet connection detected" , message: "Please check your internet connection and try again", preferredStyle: .actionSheet)
+        confirmationAlert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action : UIAlertAction!) in }))
+        
+        present(confirmationAlert,animated: true, completion: nil)
     }
 }

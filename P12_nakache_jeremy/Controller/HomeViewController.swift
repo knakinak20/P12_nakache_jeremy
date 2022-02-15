@@ -11,17 +11,22 @@ class HomeViewController: UIViewController {
     
     private let resultRepository = ResultRepository()
     private var results = [ResponseFixture]()
-    private var league = [String]()
-    private var fixture = [Int]()
-    private var leagueFixture = [Any]()
     private var dateToday = ""
+    @IBOutlet weak var resultButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        resultButton.isUserInteractionEnabled = true
+        resultButton.layer.opacity = 1
+    }
+    
     @IBAction func getResult(_ sender: Any) {
+        resultButton.isUserInteractionEnabled = false
         getResultData()
         
     }
@@ -44,9 +49,11 @@ class HomeViewController: UIViewController {
                 self?.performSegue(withIdentifier: "SegueToResultDay", sender: self)
                     
                 case .failure(_):
-                    print("alert")
+                    self?.alert()
                     break
             }
+                self?.resultButton.layer.opacity = 1
+                self?.resultButton.isUserInteractionEnabled = true
         }
     }
     }
@@ -56,6 +63,12 @@ class HomeViewController: UIViewController {
                 nextViewController.results = results
             }
         }
+    }
+    private func alert() {
+        let  confirmationAlert = UIAlertController(title: "No internet connection detected" , message: "Please check your internet connection and try again", preferredStyle: .actionSheet)
+        confirmationAlert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action : UIAlertAction!) in }))
+        
+        present(confirmationAlert,animated: true, completion: nil)
     }
     
 }
