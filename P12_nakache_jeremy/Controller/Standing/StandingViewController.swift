@@ -11,9 +11,6 @@ class StandingViewController: UIViewController {
     
     @IBOutlet weak var standingL1TableView: UITableView!
     
-    
-//    private var repositoryStanding = StandingsRepository()
-//    private var teamRepository = TeamsRepository()
     var standings = [Standing]()
     var selectedLigue = ""
     

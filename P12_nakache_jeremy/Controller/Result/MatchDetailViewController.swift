@@ -37,7 +37,7 @@ class MatchDetailViewController: UIViewController {
         getEvent()
         
     }
-    private func configure(){
+    private func configure(){ // configure the view with information of the match selected
         
         if let nameTeamHome = results.first?.teams.home.name {
             nameTeamHomeLabel.text = nameTeamHome
@@ -110,7 +110,7 @@ class MatchDetailViewController: UIViewController {
         scoreLabel.text = score
     }
     
-    private func getEvent() {
+    private func getEvent() { // call api to have event's information of the match selected
         
         guard let idFixture = results.first?.fixture.id else {
             return }
@@ -120,16 +120,16 @@ class MatchDetailViewController: UIViewController {
                 switch result {
                 case .success(let event) :
                     self.events = event.response
-                self.eventsTableView.reloadData()
+                    self.eventsTableView.reloadData()
                 case .failure(_):
                     self.alert()
                     break
+                }
             }
         }
+        
+        
     }
-    
-    
-}
 }
 extension MatchDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

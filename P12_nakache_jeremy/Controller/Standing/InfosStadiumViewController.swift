@@ -31,24 +31,24 @@ class InfosStadiumViewController: UIViewController {
     }
     
     
-    private func update() {
+    private func update() { // call api to have selected team information
         guard let id = standing.first?.team.id else { return }
         
         teamRepository.getDataTeams(endPoint: "teams?id=\(id)") { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let team) :
-                guard  let responseTeam = team.response.first else { return }
-                self.updateView(with: responseTeam)
+                    guard  let responseTeam = team.response.first else { return }
+                    self.updateView(with: responseTeam)
                 case .failure(_):
                     self.alert()
                     break
+                }
             }
         }
     }
-    }
     
-    private func updateView(with responseTeam: ResponseTeam) {
+    private func updateView(with responseTeam: ResponseTeam) { // setup the view of  stadium's information
         self.cityLabel.text = responseTeam.venue.city
         self.addressStadium.text = responseTeam.venue.address
         self.nameStadium.text = responseTeam.venue.name

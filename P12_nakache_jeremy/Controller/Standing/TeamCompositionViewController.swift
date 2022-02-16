@@ -35,7 +35,7 @@ class TeamCompositionViewController: UIViewController {
         compositionTeam.delegate = self
     }
     
-    private func getDataPlayers(){
+    private func getDataPlayers(){ // call api to have player's information
         guard let idTeam = idTeam else { return }
         
         playersRepository.getPlayers(endPoint: "players/squads?team=\(idTeam)") { result in
@@ -43,8 +43,8 @@ class TeamCompositionViewController: UIViewController {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let player) :
-                guard let players = player.response.first?.players else { return }
-                self.playersSquad = players
+                    guard let players = player.response.first?.players else { return }
+                    self.playersSquad = players
                     
                 case .failure(_):
                     self.alert()
@@ -86,7 +86,7 @@ extension TeamCompositionViewController: UITableViewDataSource {
         let position = playerSquad.position
         if let numberInt = playerSquad.number {
             let numberString = String(numberInt)
-        cell.configure(name: name, image: image, age: ageString, position: position, number:  numberString)
+            cell.configure(name: name, image: image, age: ageString, position: position, number:  numberString)
         } else {
             cell.configure(name: name, image: image, age: ageString, position: position, number: "N/A")
         }

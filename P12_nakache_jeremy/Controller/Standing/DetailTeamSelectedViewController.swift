@@ -80,11 +80,11 @@ class DetailTeamSelectedViewController: UIViewController {
         segmentedControl.selectedSegmentIndex = 0
     }
     
-    @objc func selectionDidChange(sender: UISegmentedControl){
+    @objc func selectionDidChange(sender: UISegmentedControl){ // selectedsegment change we uptade the view
         updateView()
     }
     
-    private func addViewControllerAsChildViewController(childViewController: UIViewController){
+    private func addViewControllerAsChildViewController(childViewController: UIViewController){ // we add child view controller
         addChild(childViewController)
         
         viewToSwitch.addSubview(childViewController.view)
@@ -95,13 +95,13 @@ class DetailTeamSelectedViewController: UIViewController {
         childViewController.didMove(toParent: self)
     }
     
-    private func removeViewController(childViewController: UIViewController) {
+    private func removeViewController(childViewController: UIViewController) { // remove when we change view
         childViewController.willMove(toParent: nil)
         childViewController.view.removeFromSuperview()
         childViewController.removeFromParent()
     }
     
-    private func configure() {
+    private func configure() { // configure team information
         if let urlLogo = standing.first?.team.logo {
             getImage(with: urlLogo, imageView: logoTeamImageView)
         }
@@ -110,7 +110,7 @@ class DetailTeamSelectedViewController: UIViewController {
         }
         
     }
-    private func getImage(with urlString: String, imageView: UIImageView) {
+    private func getImage(with urlString: String, imageView: UIImageView) { // setup logo teams
         guard let url = URL(string: urlString) else {
             imageView.image = UIImage(named: "imageDefault")
             return
@@ -127,7 +127,7 @@ class DetailTeamSelectedViewController: UIViewController {
         
     }
     
-    private func getDataTeamSelected() {
+    private func getDataTeamSelected() { // call api to have team information
         guard let selectedTeamId = standing.first?.team.id else {
             return }
         

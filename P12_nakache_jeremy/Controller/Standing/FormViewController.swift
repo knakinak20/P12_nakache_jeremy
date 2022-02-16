@@ -38,7 +38,6 @@ class FormViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         button.layer.opacity = 1
     }
     
-    // Nombre de colonne dans le pickerView
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
     }
@@ -83,7 +82,7 @@ class FormViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         }
     }
     
-    func chooseSelectedRow () {
+    func chooseSelectedRow () { //we retrieve the value of the row in the second picker view to affect a good selectedLeague variable
         let selection1 = pickerView.selectedRow(inComponent: 0)
         let selection2 = pickerView.selectedRow(inComponent: 1)
         let dataArray = pickerViewData.countryPickerData[selection1]
@@ -109,15 +108,15 @@ class FormViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
     }
     
     
-    private func getStanding() {
+    private func getStanding() { // call to api to have standing information
         repositoryStanding.getDataStandings(endPoint: "standings?league=\(selectedLigueId)&season=2021") { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let standing) :
-                if let response = standing.response.first?.league.standings?.first {
-                    self.standings = response.compactMap { $0.self}
-                    self.performSegue(withIdentifier: "segueToStanding", sender: nil)
-                }
+                    if let response = standing.response.first?.league.standings?.first {
+                        self.standings = response.compactMap { $0.self}
+                        self.performSegue(withIdentifier: "segueToStanding", sender: nil)
+                    }
                     
                 case .failure(_):
                     self.alert()

@@ -67,10 +67,9 @@ extension LiveResultViewController: UITableViewDelegate {
                 let indexpathsSection = indexPath.section
                 let index = fixtureMap.index(fixtureMap.startIndex, offsetBy: indexpathsSection)
                 let league = fixtureMap[index]
-                //let nameResultindexpathsSection = league.key.name
-                //if let array = fixtureMap[nameResultindexpathsSection] {
+                
                 nextViewController.results = [league.value[indexPath.row]]
-                //}
+                
             }
         }
         
@@ -89,7 +88,7 @@ extension LiveResultViewController: UITableViewDataSource {
         }
         let index = orderedLeagueNames[section]
         let league = fixtureMap[index]
-
+        
         return league?.count ?? 0
     }
     
@@ -114,7 +113,7 @@ extension LiveResultViewController: UITableViewDataSource {
         }
         
         
-        let index = orderedLeagueNames[indexPath.section] //[fixtureMap.index(fixtureMap.startIndex, offsetBy: indexPath.section)
+        let index = orderedLeagueNames[indexPath.section]
         
         
         guard let fixtures = fixtureMap[index], indexPath.row < fixtures.count else {

@@ -30,7 +30,7 @@ class HomeViewController: UIViewController {
         getResultData()
         
     }
-    private func getCurrentShortDate() {
+    private func getCurrentShortDate() { // this function gives us the current date in the desired format
         let todaysDate = NSDate()
         
         let dateFormatter = DateFormatter()
@@ -38,24 +38,24 @@ class HomeViewController: UIViewController {
         dateToday = dateFormatter.string(from: todaysDate as Date)
     }
     
-    private func getResultData() {
+    private func getResultData() { // we call api and take the result match of the day
         getCurrentShortDate()
         
         resultRepository.getResults(endPoint: "fixtures?date=\(dateToday)&timezone=Europe/Paris") { [weak self] result in
             DispatchQueue.main.async { [weak self] in
                 switch result {
                 case .success(let matchResult) :
-                self?.results = matchResult.response
-                self?.performSegue(withIdentifier: "SegueToResultDay", sender: self)
+                    self?.results = matchResult.response
+                    self?.performSegue(withIdentifier: "SegueToResultDay", sender: self)
                     
                 case .failure(_):
                     self?.alert()
                     break
-            }
+                }
                 self?.resultButton.layer.opacity = 1
                 self?.resultButton.isUserInteractionEnabled = true
+            }
         }
-    }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SegueToResultDay" {

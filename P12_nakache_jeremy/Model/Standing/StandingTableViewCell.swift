@@ -10,8 +10,8 @@ import Alamofire
 import AlamofireImage
 
 class StandingTableViewCell: UITableViewCell {
-
-         
+    
+    
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var nameTeamLabel: UILabel!
     @IBOutlet weak var pointsLabel: UILabel!
@@ -23,13 +23,13 @@ class StandingTableViewCell: UITableViewCell {
     @IBOutlet weak var goalsDiffLabel: UILabel!
     
     
-            override func awakeFromNib() {
-                super.awakeFromNib()
-                
-                // Background
-                self.backgroundColor = .clear
-
-            }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        // Background
+        self.backgroundColor = .clear
+        
+    }
     
     func configure(rank: String, nameTeam: String, point: String, played: String, win: String, draw: String, lose : String, goalsDiff: String, logoUrl: String ) {
         
@@ -49,18 +49,18 @@ class StandingTableViewCell: UITableViewCell {
             logoImageView.image = UIImage(named: "imageDefault")
             return
         }
-    
-    AF.request(url).responseImage { [weak self] response in
-        if case .success(let image) = response.result {
-            self?.logoImageView.image = image
-        } else {
-            self?.logoImageView.image = UIImage(named: "imageDefault")
+        
+        AF.request(url).responseImage { [weak self] response in
+            if case .success(let image) = response.result {
+                self?.logoImageView.image = image
+            } else {
+                self?.logoImageView.image = UIImage(named: "imageDefault")
+            }
+            
         }
         
     }
     
-    }
-
 }
 
 

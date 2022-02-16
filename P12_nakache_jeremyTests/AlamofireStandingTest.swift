@@ -10,7 +10,7 @@ import XCTest
 @testable import Alamofire
 
 class AlamofireStandingTest: XCTestCase {
-
+    
     private var sut: StandingsRepository!
     
     override func setUp() {
@@ -35,13 +35,13 @@ class AlamofireStandingTest: XCTestCase {
     }
     
     func test_status_code200_returns_status_code200() throws {
- 
+        
         
         let expectation = XCTestExpectation(description: "Performs a request")
         
         let expectedResultCount = 1
         let expectedResult = StandingsStructJson(get: "", parameters: Parameters(league: "", season:""), errors: [""], results: expectedResultCount, paging: Paging(current: 1, total: 1), response: [])
-        //Standing(rank: 1, team: TeamStanding(id: 1, name: "marseille", logo: ""), points: 32, goalsDiff: 4, group: "", form: "", status: "", description: "", all: All(played: 1, win: 1, draw: 1, lose: 1, goals: Goals(_for: 1, against: 1)), home:All(played: 1, win: 1, draw: 1, lose: 1, goals: Goals(_for: 1, against: 1)) , away: All(played: 1, win: 1, draw: 1, lose: 1, goals: Goals(_for: 1, against: 1)), update: "")
+        
         let expectedResultData = try! JSONEncoder().encode(expectedResult)
         
         MockURLProtocol.responseWithStatusCode(code: 200, data: expectedResultData)
@@ -55,7 +55,7 @@ class AlamofireStandingTest: XCTestCase {
         wait(for: [expectation], timeout: 3)
     }
     func test_status_code400_returns_status_code400() throws {
-  
+        
         let expectation = XCTestExpectation(description: "Performs a request")
         
         let expectedResultCount = 1
@@ -63,7 +63,7 @@ class AlamofireStandingTest: XCTestCase {
         let expectedResultData = try! JSONEncoder().encode(expectedResult)
         
         MockURLProtocol.responseWithStatusCode(code: 400, data: expectedResultData)
-
+        
         sut.getDataStandings(endPoint: "teams") { (result) in
             let standing = result.isFailure
             XCTAssertEqual(standing, true)
